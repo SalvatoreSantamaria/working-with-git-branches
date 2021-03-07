@@ -24,3 +24,16 @@ To compare the two branches, use `git diff <branch1> <branch2>`
 `git rebase` is used to clean up local history to focus on the end result. This should increase accuracy and clarity.
 Do not use rebase on a public branch. 
 You can use rebase to squash multiple commits into 1. 
+
+Check to see which commit to use to start a rebase: `git merge-base <source-branch> <target-branch>`
+Start the rebase with 
+
+
+Then git will open the file and show the commits you can work with
+```
+pick 34f86e9 Added Notes
+pick ca9e66e Commit 1
+pick d7f8d31 Commit 2
+pick 1061789 Commit 3
+```
+Change `pick` to `squash` to merge multiple commit in
