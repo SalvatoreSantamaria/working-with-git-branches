@@ -1,3 +1,4 @@
+## Working with git branches 
 From https://app.pluralsight.com/library/courses/working-git-branches/table-of-contents
 
 list branches: `git branch`
@@ -9,6 +10,7 @@ force delete a branch: `git branch -D <branch-name>`
 see branch history: `git log` or `git log --oneline`
 
 ---
+## Merge 
 
 target = target of the merge (main in this example)
 source = solution branch
@@ -20,6 +22,7 @@ To merge branches,
 To compare the two branches, use `git diff <branch1> <branch2>`
 
 ---
+## Rebase 
 
 `git rebase` is used to clean up local history to focus on the end result. This should increase accuracy and clarity.
 Do not use rebase on a public branch. 
@@ -39,6 +42,7 @@ pick 1061789 Commit 3
 * 4 Change `pick` to `squash` to merge multiple commit in
 
 --- 
+## Cherry Pick 
 
 Cherry pick from other branches to import specific commits into your branch, to do things like
 - getting features needed for your ticket
