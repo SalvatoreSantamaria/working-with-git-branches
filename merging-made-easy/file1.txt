@@ -6,3 +6,4 @@ Commit 3
 
 Example for cherry pick: 1
 Example for cherry pick: 2
+Example for cherry pick: 2
