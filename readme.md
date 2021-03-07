@@ -6,7 +6,7 @@ switch to a new branch: `git checkout -b <branch-name>`
 rename a branch: `git branch -m <oldName> <newName>`
 delete a branch: `git branch -d <branch-nam>`
 force delete a branch: `git branch -D <branch-name>`
-see branch history: `git log --oneline`
+see branch history: `git log` or `git log --oneline`
 
 ---
 
