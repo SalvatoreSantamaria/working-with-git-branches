@@ -2,3 +2,4 @@ Here is file 1 text
 
 Commit 1
 Commit 2
+Commit 3
