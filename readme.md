@@ -2,6 +2,9 @@
 From https://app.pluralsight.com/library/courses/working-git-branches/table-of-contents
 
 list branches: `git branch`
+list all local and remote branches: `git branch -a`
+list only local branches: `git branch -r` 
+   _If you have color options on it’s also quite easy to tell which branches aren’t pulled down since they’re listed in red._
 switch to a branch: `git checkout <branch-name>`
 switch to a new branch: `git checkout -b <branch-name>`
 rename a branch: `git branch -m <oldName> <newName>`
@@ -52,3 +55,9 @@ Cherry pick from other branches to import specific commits into your branch, to 
 * 1 Find the wanted commit with `git log --oneline` or view the log from a different branch with `git log <branch-name>  --online`
 * 2 Checkout the branch where you want to make a copy of the commit with `git checkout <branch-name>`
 * 3  Use the cherry-pick command to append the commit to HEAD with `git cherry-pick <commit>`
+
+---
+## Checkout PR
+
+Use the CLI in the terminal: `gh pr checkout 1234`
+_see the open with GitHub CLI submenu in the pull request_
