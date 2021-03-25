@@ -30,11 +30,16 @@ To compare the two branches, use `git diff <branch1> <branch2>`
 `git rebase` is used to clean up local history to focus on the end result. This should increase accuracy and clarity.
 Do not use rebase on a public branch. 
 You can use rebase to squash multiple commits into 1. 
+Rebasing will move work from `branch` directly onto the work from main. That way it would look like these two features were developed sequentially, when in reality they were developed in parallel.
 
-* 1 Check to see which commit to use to start a rebase: `git merge-base <source-branch> <target-branch>`
+Basic rebase instructions
+* 1 git checkout `feature branch`
+* 2 git rebase `main`  
+
+---
+
+* 1 Check to see which commit to use to start a rebase: `git merge-base <source-branch(solution)> <target-branch(main)>`
 * 2 Start the rebase with `git rebase -i <commit-number-here, like ca9e666...>`
-
-
 * 3 Then git will open the file and show the commits you can work with
 ```
 pick 34f86e9 Added Notes
