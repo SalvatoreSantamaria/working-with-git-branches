@@ -12,6 +12,28 @@ delete a branch: `git branch -d <branch-nam>`
 force delete a branch: `git branch -D <branch-name>`
 see branch history: `git log` or `git log --oneline`
 
+View changes that aren't pushed yet: `git diff origin/master..HEAD`q
+
+Save your changes, back to last commit `git reset HEAD^ --soft`
+Discard changes, back to last commit `git reset HEAD^ --hard`
+
+Turn your local repository into a mirror image of the remote of your choice
+*Remember to replace `origin` and `master` with the remote and branch that you want to synchronize with*
+* Retrieve lastest data from the original: `git fetch origin`
+* throw away all my changes, forget everything on my current local branch make it same orgin/master: `git reset --hard origin/master`
+* Remove unwanted files from your working directory: `git clean -f -d`
+
+*If you need to undo a commit, use revert*
+
+To overwrite your local files do:
+
+git fetch --all
+git reset --hard <remote>/<branch_name>
+For example:
+
+git fetch --all
+git reset --hard origin/master
+
 ---
 ## Merge 
 
@@ -66,3 +88,10 @@ Cherry pick from other branches to import specific commits into your branch, to 
 
 Use the CLI in the terminal: `gh pr checkout 1234`
 _see the open with GitHub CLI submenu in the pull request_
+
+
+## Oh My Git! notes
+Go back to a previous commit with `git checkout HEAD^`
+Go back two commits with `git checkout HEAD~2`
+
+Go to the last commit with `git checkout --detach name_of_branch`
