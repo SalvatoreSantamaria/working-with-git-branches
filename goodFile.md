@@ -1,4 +1,5 @@
 This file is now good!
 This line is good
 Another line that is good!
-This line is bad. 
+This line is good now. 
+
