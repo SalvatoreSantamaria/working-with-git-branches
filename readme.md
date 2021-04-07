@@ -136,3 +136,15 @@ ca0bbb4     Third commit
 5ffcac5     Second commit
 ac49968     First commit
 `git reset --soft 5ffcac5` will move the files in the Forth commit and Third commit back to the staging area.
+
+
+If you want to undo the last commit from a repo on github  
+1 Get the SHA with `git log --online`
+a808698     Fourth commit  
+ca0bbb4     Third commit
+5ffcac5     Second commit
+ac49968     First commit
+2 Move to previous commit and put Forth commit files back to staging area `git reset --soft ca0bbb4`
+3 Edit these files  
+4 Commit the files with `git commit -m 'some message'`
+5 Push them back up with `git push -f` (-f because you are now behind the remote counterpart, and you will receive a terminal warning saying so)
