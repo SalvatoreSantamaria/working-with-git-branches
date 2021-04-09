@@ -148,3 +148,52 @@ ac49968     First commit
 3 Edit these files  
 4 Commit the files with `git commit -m 'some message'`
 5 Push them back up with `git push -f` (-f because you are now behind the remote counterpart, and you will receive a terminal warning saying so)
+
+---
+## Git Diff
+
+Once you have made a commit, you can see the message, author and some additional information using the git log command. When you type this in you will also see the full SHA, which, as we've discussed, is a unique identifier for the commit. To get out of git log you can type q.
+
+As you work on a project by adding and modifying files and committing changes, your commit history will expand and your git log will grow. Sometimes you'll want to compare the history of your code at two different points in time. To do this, we can use the git diff command.
+
+If you want to see differences between your commits you can use the git diff command and specify the SHA to compare. This will compare your code now to your code at that SHA. Here are a few different kinds of diff-s that you can see.
+
+`git diff` - See changes in the working tree not yet staged for the next commit.
+
+`git diff --cached` - See Changes between the staging area and your last commit.
+
+`git diff HEAD` - See all changes in the working directory since your last commit.
+
+`git diff ANOTHER_BRANCH` - compare with the latest code on another branch
+
+`git diff HEAD~1 HEAD` - compare with the previous commit (add ~2, ~3 for older commits)
+
+You can read more about git diff here: https://git-scm.com/docs/git-diff
+
+---
+## Git Clean 
+`git clean` runs on untracked files. 
+- Untracked files are those created within the working directory, but are not yet added to the tracking index.
+- Once executed, you cannot undo `git clean`
+- When it is fully executed, it will create a hard file system deletion.
+- `git clean -n` shows what **would** be deleted but doesn't actually delete.
+- Use `git clean -f` to actually delete.
+
+## Git Stash
+`git stash` will not save changes to the branch, but save them in a stash for later work. 
+Use `git stash save "Description of changes here"` to stash your local uncommitted changes, thereby making your repo clean and free of changes again.
+
+## PR Steps 
+https://bocoup.com/blog/git-workflow-walkthrough-reviewing-pull-requests-local
+1 Make local environment in a clean state by either stashing or saving to feature branch
+2 Pull down the remote branch that the PR is based on with `git checkout -b BRANCHNAME origin/BRANCHNAME`
+
+3 **OR** Pull down PR Branch with a **read-only** copy with `git fetch origin pull/ID/head:BRANCHNAME` 
+- Example `git fetch origin pull/37/head:somechange`. This will give a ready only reference to the PR.
+- `ID` is the numberical ID assigned to the PR, which you can see in the URL or at the top of the PR page. 
+- `BRANCHNAME` is the local branch name you want to give it
+4 Now switch this branch to local with `git checkout somechange`
+
+5 If you used a feature branch approach and checked in your changes, you can just switch back to your feature branch and go.
+- `git checkout your_feature_branch`
+- If you used stash, run `git stash pop` and all stashed changes will be back locally and uncommitted.
