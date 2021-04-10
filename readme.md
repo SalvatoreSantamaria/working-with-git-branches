@@ -1,42 +1,45 @@
 ## Working with git branches 
-From https://app.pluralsight.com/library/courses/working-git-branches/table-of-contents
-_Note on origin: `origin` is simply the nickname for the remote url. `remote add origin https://github.com/...` creates the nickname_
+From https://app.pluralsight.com/library/courses/working-git-branches/table-of-contents  
+_Note on origin: `origin` is simply the nickname for the remote url. `remote add origin https://github.com/...` creates the nickname_  
 _Example: `git push origin master` is the shorthand for  `git push https://github.com/elie/first_repo.git master`_
 
-list branches: `git branch`
-list all local and remote branches: `git branch -a`
-list only local branches: `git branch -r` 
-   _If you have color options on it’s also quite easy to tell which branches aren’t pulled down since they’re listed in red._
-see the branches on a remote: git `git ls-remote`
-switch to a branch: `git checkout <branch-name>`
-switch to a new branch: `git checkout -b <branch-name>`
-   example: `git checkout -b working-with-code`
-rename a branch: `git branch -m <oldName> <newName>`
-delete a branch: `git branch -d <branch-nam>`
-force delete a branch: `git branch -D <branch-name>`
-see branch history: `git log` or `git log --oneline`
 
-View changes that aren't pushed yet: `git diff origin/master..HEAD`
+* list branches: `git branch`  
+* list all local and remote branches: `git branch -a`  
+* list only local branches: `git branch -r`   
 
-Save your changes, back to last commit `git reset HEAD^ --soft`
-Discard changes, back to last commit `git reset HEAD^ --hard`
+  * _If you have color options on it’s also quite easy to tell which branches aren’t pulled down since they’re listed in red._  
+* see the branches on a remote: `git ls-remote`  
+* switch to a branch: `git checkout <branch-name>`  
+* switch to a new branch: `git checkout -b <branch-name>`  
 
-Turn your local repository into a mirror image of the remote of your choice
-*Remember to replace `origin` and `master` with the remote and branch that you want to synchronize with*
-* Retrieve lastest data from the original: `git fetch origin`
-* throw away all my changes, forget everything on my current local branch make it same orgin/master: `git reset --hard origin/master`
-* Remove unwanted files from your working directory: `git clean -f -d`
+  * example: `git checkout -b working-with-code`  
+* rename a branch: `git branch -m <oldName> <newName>`  
+* delete a branch: `git branch -d <branch-nam>`  
+* force delete a branch: `git branch -D <branch-name>`  
+* see branch history: `git log` or `git log --oneline`  
+* View changes that aren't pushed yet: `git diff origin/master..HEAD`  
+* Save your changes, back to last commit `git reset HEAD^ --soft`  
+* Discard changes, back to last commit `git reset HEAD^ --hard`  
 
-*If you need to undo a commit, use revert*
+---
+## Turn your local repository into a mirror image of the remote of your choice  
 
-To overwrite your local files do:
+  *Remember to replace `origin` and `master` with the remote and branch that you want to synchronize with*  
+1. Retrieve lastest data from the original: `git fetch origin`  
+2. throw away all my changes, forget everything on my current local branch make it same orgin/master: `git reset --hard origin/master`  
+3. Remove unwanted files from your working directory: `git clean -f -d`  
 
-git fetch --all
-git reset --hard <remote>/<branch_name>
-For example:
+* *If you need to undo a commit, use revert*  
 
-git fetch --all
-git reset --hard origin/master
+### Quick Version: To overwrite your local files do:  
+
+* `git fetch --all`  
+* `git reset --hard <remote>/<branch_name>`  
+
+For example:  
+* `git fetch --all  `
+* `git reset --hard origin/master  `
 
 ---
 ## Merge 
@@ -83,6 +86,7 @@ squash 1061789 Commit 3
 
 --- 
 ## Cherry Pick 
+https://www.atlassian.com/git/tutorials/cherry-pick
 
 Cherry pick from other branches to import specific commits into your branch, to do things like
 - getting features needed for your ticket
@@ -99,7 +103,7 @@ Cherry pick from other branches to import specific commits into your branch, to 
 Use the CLI in the terminal: `gh pr checkout 1234`
 _see the open with GitHub CLI submenu in the pull request_
 If you use `git pull` for PR's, you are merging in the code from the PR to the local branch. When you `git push` code next, the PR pulled code will go onto your current remote branch.
-
+  `git pull --rebase` will use rebase instead of the default merge.
 
 
 ## Oh My Git! notes
