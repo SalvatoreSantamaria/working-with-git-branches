@@ -10,6 +10,7 @@ list only local branches: `git branch -r`
 see the branches on a remote: git `git ls-remote`
 switch to a branch: `git checkout <branch-name>`
 switch to a new branch: `git checkout -b <branch-name>`
+   example: `git checkout -b working-with-code`
 rename a branch: `git branch -m <oldName> <newName>`
 delete a branch: `git branch -d <branch-nam>`
 force delete a branch: `git branch -D <branch-name>`
@@ -40,26 +41,32 @@ git reset --hard origin/master
 ---
 ## Merge 
 
-target = target of the merge (main in this example)
-source = solution branch
+The easiest option is to merge the master branch into the feature branch using something like the following:
+`git checkout feature`
+`git merge master`
 
-To merge branches, 
-* 1 switch to the target(main) branch `git checkout <target-branch>`
-* 2 merge in the source(solution) branch with `git merge <source-branch>`
+This creates a new “merge commit” in the feature branch that ties together the histories of both branches, giving you a branch structure that looks like this:
+           _f_f_f__merge_commit
+_master_m_/_m_m_m_/
 
 To compare the two branches, use `git diff <branch1> <branch2>`
 
 ---
 ## Rebase 
+https://www.atlassian.com/git/tutorials/merging-vs-rebasing
+
+**Never use rebase on public branches**
 
 `git rebase` is used to clean up local history to focus on the end result. This should increase accuracy and clarity.
 Do not use rebase on a public branch. 
 You can use rebase to squash multiple commits into 1. 
-Rebasing will move work from `branch` directly onto the work from main. That way it would look like these two features were developed sequentially, when in reality they were developed in parallel.
+Rebasing will move work from `feature branch` directly onto the work from main. That way it would look like these two features were developed sequentially, when in reality they were developed in parallel.
 
 Basic rebase instructions
 * 1 git checkout `feature branch`
-* 2 git rebase `main`  
+* 2 git rebase `master`  
+
+Once you have rebased, if you try to push to GitHub, your push will be rejected because the remote branch has a different commit history. In order to bypass this, you can use the --force (or -f) flag after git push, but be very careful - this will override your GitHub commit history. You never want to do this if other people are working on that remote branch. This is only useful if you are alone and want to push up your commits before merging into a branch that others work on. 
 
 ---
 
@@ -68,11 +75,11 @@ Basic rebase instructions
 * 3 Then git will open the file and show the commits you can work with
 ```
 pick 34f86e9 Added Notes
-pick ca9e66e Commit 1
-pick d7f8d31 Commit 2
-pick 1061789 Commit 3
+squash ca9e66e Commit 1
+squash d7f8d31 Commit 2
+squash 1061789 Commit 3
 ```
-* 4 Change `pick` to `squash` to merge multiple commit in
+* 4 Change `pick` to `squash` to merge multiple commits in
 
 --- 
 ## Cherry Pick 
@@ -148,6 +155,40 @@ ac49968     First commit
 3 Edit these files  
 4 Commit the files with `git commit -m 'some message'`
 5 Push them back up with `git push -f` (-f because you are now behind the remote counterpart, and you will receive a terminal warning saying so)
+---
+
+## Git Revert
+https://www.rithmschool.com/courses/git/git-github-reverting
+
+`git revert` _undoes_ a commit by appending a new commit with the resulting content
+`git reset` _removes_ the commit from commit history. Dangerous
+
+Use `git revert HEAD~2` to revert a commit that is 2 back from where we are
+```
+touch first.txt # Create a file called `first.txt`
+echo Start >> first.txt # Add the text "Start" to `first.txt`
+
+git add . # Add the `first.txt` file
+git commit -m "adding first" # Commit with the message "Adding first.txt"
+
+echo WRONG > wrong.txt # Add the text "WRONG" to `wrong.txt`
+git add . # Add the `wrong.txt` file
+git commit -m "adding WRONG to wrong.txt" # Commit with the message "Adding WRONG to wrong.txt"
+
+echo More >> first.txt # Add the text "More" to `first.txt`
+git add . # Add the `first.txt` file
+git commit -m "adding More to first.txt" # Commit with the message "Adding More to first.txt"
+
+echo Even More >> first.txt # Add the text "Even More" to `first.txt`
+git add . # Add the `first.txt` file
+git commit -m "adding Even More to First.txt" # Commit with the message "Adding More to first.txt"
+
+# OH NO! We want to undo the commit with the text "WRONG" - let's revert!
+```
+OR 
+use `git log` and find the SHA of that commit 
+
+
 
 ---
 ## Git Diff
