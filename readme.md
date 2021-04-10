@@ -10,6 +10,7 @@ list only local branches: `git branch -r`
 see the branches on a remote: git `git ls-remote`
 switch to a branch: `git checkout <branch-name>`
 switch to a new branch: `git checkout -b <branch-name>`
+   example: `git checkout -b working-with-code`
 rename a branch: `git branch -m <oldName> <newName>`
 delete a branch: `git branch -d <branch-nam>`
 force delete a branch: `git branch -D <branch-name>`
@@ -154,6 +155,40 @@ ac49968     First commit
 3 Edit these files  
 4 Commit the files with `git commit -m 'some message'`
 5 Push them back up with `git push -f` (-f because you are now behind the remote counterpart, and you will receive a terminal warning saying so)
+---
+
+## Git Revert
+https://www.rithmschool.com/courses/git/git-github-reverting
+
+`git revert` _undoes_ a commit by appending a new commit with the resulting content
+`git reset` _removes_ the commit from commit history. Dangerous
+
+Use `git revert HEAD~2` to revert a commit that is 2 back from where we are
+```
+touch first.txt # Create a file called `first.txt`
+echo Start >> first.txt # Add the text "Start" to `first.txt`
+
+git add . # Add the `first.txt` file
+git commit -m "adding first" # Commit with the message "Adding first.txt"
+
+echo WRONG > wrong.txt # Add the text "WRONG" to `wrong.txt`
+git add . # Add the `wrong.txt` file
+git commit -m "adding WRONG to wrong.txt" # Commit with the message "Adding WRONG to wrong.txt"
+
+echo More >> first.txt # Add the text "More" to `first.txt`
+git add . # Add the `first.txt` file
+git commit -m "adding More to first.txt" # Commit with the message "Adding More to first.txt"
+
+echo Even More >> first.txt # Add the text "Even More" to `first.txt`
+git add . # Add the `first.txt` file
+git commit -m "adding Even More to First.txt" # Commit with the message "Adding More to first.txt"
+
+# OH NO! We want to undo the commit with the text "WRONG" - let's revert!
+```
+OR 
+use `git log` and find the SHA of that commit 
+
+
 
 ---
 ## Git Diff
