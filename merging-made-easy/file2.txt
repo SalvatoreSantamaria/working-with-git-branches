@@ -1,3 +1,0 @@
-Branch Y text 1
-Branch Y text 2
-Branch Y text 3
