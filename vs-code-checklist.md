@@ -1,4 +1,6 @@
 [ ] Pull down branches to review
+  Installed Github pull requests and issues extension
+  Just click on the botton left branch to get changes
 [ ] Switch between branches without moving code between them
 [ ] Merge master into my branch
 [ ] Merge other branch into my branch
@@ -6,4 +8,6 @@
 [ ] Remove an unwanted commit
 [ ] Go back to a pushed commit 
 [ ] Remove unwanted files (from a pushed commit)
-[ ] Cherry Pick
+[ ] Cherry Pick a commit from one branch to another
+[ ] Reset a branch to be the same as a remote branch
+
