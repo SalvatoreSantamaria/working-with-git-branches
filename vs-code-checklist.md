@@ -1,4 +1,6 @@
 [ ] Pull down branches to review
+  Installed Github pull requests and issues extension
+  Just click on the botton left branch to get changes
 [ ] Switch between branches without moving code between them
 [ ] Merge master into my branch
 [ ] Merge other branch into my branch
