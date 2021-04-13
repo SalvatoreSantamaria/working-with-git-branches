@@ -5,7 +5,8 @@
       Click the lower left hand branch button and pick branch. 
 [x] Merge master into my branch
       Go to branch > Merge from Main.
-[ ] Merge other branch into my branch
+[x] Merge other branch into my branch
+      Branch > merge branch > select the branch to merge into current branch.
 [ ] Squash all my commits into 1
 [ ] Remove an unwanted commit
 [ ] Go back to a pushed commit 
