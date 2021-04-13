@@ -130,6 +130,8 @@ Trying to push but need to first integrate remote changes?
 Use either pull and then complete the merge and have a merge commit OR can rebase with `git rebase origin/master`
 
 ## Undoing Commits with reset
+Steve Griffith : https://www.youtube.com/watch?v=ipav1TCV8BI
+
 https://www.rithmschool.com/courses/git/git-github-checkout_reset
 To undo commits, you can use `git reset` command
 `git reset --soft COMMIT_SHA` moves the files commited back to the staging area

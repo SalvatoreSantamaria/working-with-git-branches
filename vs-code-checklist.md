@@ -9,6 +9,8 @@
       Branch > merge branch > select the branch to merge into current branch.
 [ ] Squash all my commits into 1
 [ ] Remove an unwanted commit
+      Undo Last: Commit > Undo Last Commit
+      Undo: Use GitLens. File History > Commits > Right Click > Restore
 [ ] Go back to a pushed commit 
 [ ] Remove unwanted files (from a pushed commit)
 [ ] Cherry Pick a commit from one branch to another
