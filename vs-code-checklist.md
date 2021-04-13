@@ -1,7 +1,8 @@
 [x] Pull down branches to review
       Installed Github pull requests and issues extension
       Just click on the botton left branch to get changes
-[ ] Switch between branches without moving code between them
+[x] Switch between branches without moving code between them
+      Click the lower left hand branch button and pick branch. 
 [x] Merge master into my branch
       Go to branch > Merge from Main.
 [ ] Merge other branch into my branch
