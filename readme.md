@@ -167,7 +167,7 @@ ac49968     First commit
 https://www.rithmschool.com/courses/git/git-github-reverting
 
 `git revert` _undoes_ a commit by appending a new commit with the resulting content
-`git reset` _removes_ the commit from commit history. Dangerous
+`git reset` _removes_ the commit from commit history. *Dangerous*
 
 Use `git revert HEAD~2` to revert a commit that is 2 back from where we are
 ```
