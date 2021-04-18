@@ -13,8 +13,8 @@
       Undo Last: Commit > Undo Last Commit
       Revert a file back to a previous commit: Use GitLens. Select File > File History > Commits > Right Click > Restore
       Revert a file removing a commit: Select File > File History > Commits > Right click on file > Commit > Revert Commit
-[ ] Cherry Pick a commit from one branch to another
-      Git Graph!
+[√] Cherry Pick a commit from one branch to another
+      From the branch that will receive the cherry pick > Open Git Graph > Right Click on the commit > Select Cherry Pick > Confirm with *Yes, Cherry Pick*
 [√] Reset a branch to be the same as a remote branch
       Switch to the branch to reset > Open Git Graph > Right click on commit (main) that you would like to reset to > select *Reset Current Branch to this Commit*
 [√] Git Fetch
