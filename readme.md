@@ -93,7 +93,7 @@ Cherry pick from other branches to import specific commits into your branch, to 
 - branches not ready to merge yet
 - _note cherry picking does create a duplicate commit_ 
 
-* 1 Find the wanted commit with `git log --oneline` or view the log from a different branch with `git log <branch-name>  --online`
+* 1 Find the wanted commit with `git log --oneline` or view the log from a different branch with `git log <branch-name>  --oneline`
 * 2 Checkout the branch where you want to make a copy of the commit with `git checkout <branch-name>`
 * 3  Use the cherry-pick command to append the commit to HEAD with `git cherry-pick <commit>`
 
