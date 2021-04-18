@@ -7,8 +7,13 @@
       Go to branch > Merge from Main.
 [√] Merge other branch into my branch
       Branch > merge branch > select the branch to merge into current branch.
-[ ] Squash all my commits into 1
-      Have to use a Git Graph or similar extention
+[√] Squash all my commits into 1
+      *Do not do this on main*
+      - Open Git Graph > Right Click on commit that is previous to the one(s) you want to keep 
+      - Select "Reset current branch to this commit"
+      - You will then see to your left the unstaged changes belonging to all the commits you had before. Proceed to “Commit All…”
+      - Finally, do a force push to origin to replace all your existing commits for a single one.
+      - Reference: https://dannyherran.com/2020/06/git-squash-commit-vs-code/
 [√] Remove an unwanted commit / Go back to a pushed commit / Remove unwanted files
       Undo Last: Commit > Undo Last Commit
       Revert a file back to a previous commit: Use GitLens. Select File > File History > Commits > Right Click > Restore
