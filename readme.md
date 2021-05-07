@@ -29,6 +29,7 @@ _Example: `git push origin master` is the shorthand for  `git push https://githu
 1. Retrieve lastest data from the original: `git fetch origin`  
 2. throw away all my changes, forget everything on my current local branch make it same orgin/master: `git reset --hard origin/master`  
 3. Remove unwanted files from your working directory: `git clean -f -d`  
+4. Push up branch if necessary, might have to use force. `git push -f`
 
 * *If you need to undo a commit, use revert*  
 
