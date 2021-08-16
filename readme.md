@@ -4,9 +4,9 @@ _Note on origin: `origin` is simply the nickname for the remote url. `remote add
 _Example: `git push origin master` is the shorthand for  `git push https://github.com/elie/first_repo.git master`_
 
 
-* list branches: `git branch`  
+* list only local branches: `git branch`  
 * list all local and remote branches: `git branch -a`  
-* list only local branches: `git branch -r`   
+* list only remote branches: `git branch -r`   
 
   * _If you have color options on it’s also quite easy to tell which branches aren’t pulled down since they’re listed in red._  
 * see the branches on a remote: `git ls-remote`  
@@ -49,6 +49,13 @@ The easiest option is to merge the master branch into the feature branch using s
 `git checkout feature`
 `git merge master`
 
+or 
+
+`git checkout feature`
+`git merge origin/feature/PUFF-17262-fam-signup-modal`
+Then in the prompt to add a commit message, just type `:q` 
+
+
 This creates a new “merge commit” in the feature branch that ties together the histories of both branches, giving you a branch structure that looks like this:
            _f_f_f__merge_commit
 _master_m_/_m_m_m_/
@@ -60,6 +67,8 @@ To compare the two branches, use `git diff <branch1> <branch2>`
 https://www.atlassian.com/git/tutorials/merging-vs-rebasing
 
 **Never use rebase on public branches**
+**Before you run git rebase, always ask yourself, “Is anyone else looking at this branch?” If the answer is yes, take your hands off the keyboard and start thinking about a non-destructive way to make your changes (e.g., the git revert command). Otherwise, you’re safe to re-write history as much as you like.**
+
 
 `git rebase` is used to clean up local history to focus on the end result. This should increase accuracy and clarity.
 Do not use rebase on a public branch. 
@@ -67,13 +76,14 @@ You can use rebase to squash multiple commits into 1.
 Rebasing will move work from `feature branch` directly onto the work from main. That way it would look like these two features were developed sequentially, when in reality they were developed in parallel.
 
 Basic rebase instructions
-* 1 git checkout `feature branch`
-* 2 git rebase `master`  
+* 1 `git checkout feature-branch`
+* 2 `git rebase master` 
+* if I want to rebase onto some other branch, like dev, sandbox, etc `git rebase origin/dev` 
 
 Once you have rebased, if you try to push to GitHub, your push will be rejected because the remote branch has a different commit history. In order to bypass this, you can use the --force (or -f) flag after git push, but be very careful - this will override your GitHub commit history. You never want to do this if other people are working on that remote branch. This is only useful if you are alone and want to push up your commits before merging into a branch that others work on. 
 
 ---
-
+* Interactive Rebase:
 * 1 Check to see which commit to use to start a rebase: `git merge-base <source-branch(solution)> <target-branch(main)>`
 * 2 Start the rebase with `git rebase -i <commit-number-here, like ca9e666...>`
 * 3 Then git will open the file and show the commits you can work with
@@ -85,6 +95,17 @@ squash 1061789 Commit 3
 ```
 * 4 Change `pick` to `squash` to merge multiple commits in
 
+
+OR
+
+`git rebase -i HEAD~4` to go back
+
+
+1. press "i" (i for insert)
+2. write your merge message
+3. press "esc" (escape)
+4. write ":wq" (write & quit)
+then press enter
 --- 
 ## Cherry Pick 
 https://www.atlassian.com/git/tutorials/cherry-pick
@@ -95,7 +116,7 @@ Cherry pick from other branches to import specific commits into your branch, to 
 - _note cherry picking does create a duplicate commit_ 
 
 * 1 Find the wanted commit with `git log --oneline` or view the log from a different branch with `git log <branch-name>  --oneline`
-* 2 Checkout the branch where you want to make a copy of the commit with `git checkout <branch-name>`
+* 2 Checkout the branch where you want to make any of the commit with `git checkout <branch-name>`
 * 3  Use the cherry-pick command to append the commit to HEAD with `git cherry-pick <commit>`
 
 ---
@@ -171,26 +192,20 @@ https://www.rithmschool.com/courses/git/git-github-reverting
 `git reset` _removes_ the commit from commit history. *Dangerous*
 
 Use `git revert HEAD~2` to revert a commit that is 2 back from where we are
+
+Use `git revert --abort` to cancel an in progress revert.
 ```
-touch first.txt # Create a file called `first.txt`
-echo Start >> first.txt # Add the text "Start" to `first.txt`
 
-git add . # Add the `first.txt` file
-git commit -m "adding first" # Commit with the message "Adding first.txt"
+How do I revert to the commit 0d1d7fc?
 
-echo WRONG > wrong.txt # Add the text "WRONG" to `wrong.txt`
-git add . # Add the `wrong.txt` file
-git commit -m "adding WRONG to wrong.txt" # Commit with the message "Adding WRONG to wrong.txt"
+`git revert --no-commit 0766c053..HEAD`
+`git commit`
+This will revert everything from the HEAD back to the commit hash, meaning it will recreate that commit state in the working tree as if every commit after 0766c053 had been walked back. You can then commit the current tree, and it will create a brand new commit essentially equivalent to the commit you "reverted" to.
 
-echo More >> first.txt # Add the text "More" to `first.txt`
-git add . # Add the `first.txt` file
-git commit -m "adding More to first.txt" # Commit with the message "Adding More to first.txt"
+(The --no-commit flag lets git revert all the commits at once- otherwise you'll be prompted for a message for each commit in the range, littering your history with unnecessary new commits.)
 
-echo Even More >> first.txt # Add the text "Even More" to `first.txt`
-git add . # Add the `first.txt` file
-git commit -m "adding Even More to First.txt" # Commit with the message "Adding More to first.txt"
+This is a safe and easy way to rollback to a previous state. No history is destroyed, so it can be used for commits that have already been made public.
 
-# OH NO! We want to undo the commit with the text "WRONG" - let's revert!
 ```
 OR 
 use `git log` and find the SHA of that commit 
