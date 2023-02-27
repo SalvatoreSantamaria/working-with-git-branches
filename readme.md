@@ -172,9 +172,8 @@ ca0bbb4     Third commit
 ac49968     First commit
 `git reset --soft 5ffcac5` will move the files in the Forth commit and Third commit back to the staging area.
 
-
 If you want to undo the last commit from a repo on github  
-1 Get the SHA with `git log --online`
+1 Get the SHA with `git log --oneline`
 a808698     Fourth commit  
 ca0bbb4     Third commit
 5ffcac5     Second commit
