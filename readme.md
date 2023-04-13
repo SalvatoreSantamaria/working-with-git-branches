@@ -135,7 +135,7 @@ Go back two commits with `git checkout HEAD~2`
 Go to the last commit with `git checkout --detach name_of_branch`
 
 ## Notes on HEAD
-HEAD is the sumbolic name for the currently checked out commit. 
+HEAD is the symbolic name for the currently checked out commit. 
 HEAD always points to the most recent commit which is reflected in the working tree. Most git commands which make changes to the working tree will start by changing head
 Normally HEAD points to a branch name. When you commit the status of the branch is altered and this change is visible through HEAD.
 _Detaching HEAD just means attaching it to a commit instad of a branch._
@@ -151,11 +151,15 @@ _____
 Trying to push but need to first integrate remote changes? 
 Use either pull and then complete the merge and have a merge commit OR can rebase with `git rebase origin/master`
 
-## Undoing Commits with reset
-Steve Griffith : https://www.youtube.com/watch?v=ipav1TCV8BI
+---
 
+## Undoing Commits with reset
+
+Steve Griffith : https://www.youtube.com/watch?v=ipav1TCV8BI
 https://www.rithmschool.com/courses/git/git-github-checkout_reset
+
 To undo commits, you can use `git reset` command
+
 `git reset --soft COMMIT_SHA` moves the files commited back to the staging area
 `git reset --mixed COMMIT_SHA` moves the files committed back to the working directory (default if no flag)
 `git reset --hard COMMIT_SHA` undoes entire commit (dangerous)
