@@ -21,6 +21,7 @@ _Example: `git push origin master` is the shorthand for  `git push https://githu
 * View changes that aren't pushed yet: `git diff origin/master..HEAD`  
 * Save your changes, back to last commit `git reset HEAD^ --soft`  
 * Discard changes, back to last commit `git reset HEAD^ --hard`  
+* Quit git status: `q`
 
 ---
 ## Turn your local repository into a mirror image of the remote of your choice  
